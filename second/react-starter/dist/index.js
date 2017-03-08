@@ -1,0 +1,1 @@
+console.error("SyntaxError: /home/grzegorz/Desktop/react-starter/second_solution/src/frontend/index.js: Unexpected token (7:2) while parsing file: /home/grzegorz/Desktop/react-starter/second_solution/src/frontend/index.js")
