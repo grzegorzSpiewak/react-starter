@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 
 /** Import Components */
-import Sample from './containers/Sample/state'
+import Sample from './containers/SampleForm/state'
 
 /** Attach created componetns to DOM */
 render(
