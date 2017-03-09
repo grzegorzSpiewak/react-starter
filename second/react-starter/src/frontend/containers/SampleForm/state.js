@@ -5,7 +5,7 @@ import Component from './index.js';
 const presets = {};
 
 presets.init = {
-  text: '1234',
+  text: '',
   error: null,
   isChecked: false,
   isSubmitting: false,

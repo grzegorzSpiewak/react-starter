@@ -1,8 +1,8 @@
 import React from 'react';
 import cmz from 'cmz';
-import SubmitButton from '../../components/SubmitButton';
-import Checkbox from '../../components/Checkbox';
-import TextInput from '../../components/TextInput';
+import SubmitButton from '../../components/SubmitButton/SubmitButton';
+import Checkbox from '../../components/Checkbox/Checkbox';
+import TextInput from '../../components/TextInput/TextInput';
 
 const styles = cmz({
   form: `

@@ -1,24 +1,9 @@
 'use strict';
 import React from 'react';
 import cmz from 'cmz';
-import { generalStyle } from '../styles'
-
-const button = cmz(`
-  &: {
-    background: #9295b5;
-    border-color: white;
-    border-radius: 5px;
-  }
-
-  &:hover {
-    background: #e29a09;
-  }
-`).compose(generalStyle);  //** atache reusable styles defined in styles.js */
-
-const primaryButton = cmz(`
-  background: red;
-`).compose(generalStyle);
-
+/** Import styles for component */
+import { button } from './buttonStyles';
+import { primaryButton } from './buttonStyles'
 
 module.exports = ({ disabled, onSubmit, isSubmitting, primary }) => {
   if (isSubmitting) {
