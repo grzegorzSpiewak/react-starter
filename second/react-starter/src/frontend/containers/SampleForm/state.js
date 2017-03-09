@@ -5,7 +5,7 @@ import Component from './index.js';
 const presets = {};
 
 presets.init = {
-  text: 'hello',
+  text: '1234',
   error: null,
   isChecked: false,
   isSubmitting: false,
@@ -23,7 +23,7 @@ presets.error = {
 
 presets.withValues = {
   ...presets.init,
-  text: 'hello',
+  text: '1234',
   isChecked: true,
 }
 
@@ -35,7 +35,7 @@ presets.onlyText = {
 
 presets.onlyChechbox = {
   ...presets.withValues,
-  text: '',
+  text: '1234',
 }
 
 // stateful container
@@ -69,11 +69,11 @@ module.exports = React.createClass({
   },
 
   render: function () {
-    return <Component {...this.state}
-                      inputValue = {this.state.inputValue}
-                      onTextInput = {this.onTextInput}
-                      handleCheckboxChange = {this.handleCheckboxChange}
-                      onSubmit = {this.onSubmit}
+    return <Component { ...this.state }
+                      inputValue={ this.state.inputValue }
+                      onTextInput={ this.onTextInput }
+                      handleCheckboxChange={ this.handleCheckboxChange }
+                      onSubmit={ this.onSubmit }
     />
   }
 })
