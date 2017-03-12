@@ -1,11 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import SampleForm from './containers/SampleForm/state';
-
+import WeatherApp from './containers/WeatherApp/state';
 
 render(
-  <SampleForm />,
+  <WeatherApp />,
   document.getElementById('root')
 );
 
