@@ -22,7 +22,7 @@ module.exports = ({ informations, inputValue, clear }) => {
   };
 
   /**
-   * Hides sectiond before reciving data
+   * Hides section before reciving data
    */
   if (!informations || !informations.list) {
     return null;

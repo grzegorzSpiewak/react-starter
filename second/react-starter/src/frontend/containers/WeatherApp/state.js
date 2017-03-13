@@ -86,7 +86,7 @@ module.exports = React.createClass({
                       onTextInput={ this.onTextInput }
                       onSubmit={ this.onSubmit }
                       getCityWeather={ this.getCityWeather }
-                      clear={this.clear}
+                      clear={ this.clear }
     />
   }
 });
