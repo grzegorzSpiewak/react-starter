@@ -130,12 +130,22 @@ module.exports = function upsertCss (id, css) {
 },{}],4:[function(require,module,exports){
 'use strict';
 
+var apiKey = '--Paste your API Key from http://openweathermap.org/ here';
+module.exports = apiKey;
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * render
+ * @return {ReactElement} Header
+ */
 module.exports = function (_ref) {
   var header = _ref.header,
       isSubmitting = _ref.isSubmitting;
@@ -150,7 +160,89 @@ module.exports = function (_ref) {
   );
 };
 
-},{"react":"react"}],5:[function(require,module,exports){
+},{"react":"react"}],6:[function(require,module,exports){
+'use strict';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * render
+ * @return {ReactElement} Section
+ */
+module.exports = function (_ref) {
+  var informations = _ref.informations,
+      inputValue = _ref.inputValue,
+      clear = _ref.clear;
+
+
+  /**
+   * Handles missspelling in typed city name
+   * render
+   * @return {ReactElement} Error section
+   */
+  if (informations.message === 'Error') {
+    return _react2.default.createElement(
+      'section',
+      null,
+      _react2.default.createElement(
+        'p',
+        null,
+        inputValue,
+        ' is not a city'
+      ),
+      _react2.default.createElement(
+        'button',
+        { onClick: clear },
+        'Clear all'
+      )
+    );
+  };
+
+  /**
+   * Hides sectiond before reciving data
+   */
+  if (!informations || !informations.list) {
+    return null;
+  };
+
+  /**
+   * render
+   * @return {ReactElement} Answer section
+   */
+  return _react2.default.createElement(
+    'section',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'Country: ',
+      informations.city.country
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Current weather: ',
+      informations.list[0].weather[0].description
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Time of latest report: ',
+      informations.list[0].dt_txt
+    ),
+    _react2.default.createElement(
+      'button',
+      { onClick: clear },
+      'Clear all'
+    )
+  );
+};
+
+},{"react":"react"}],7:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -165,13 +257,18 @@ var _buttonStyles = require('./buttonStyles');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * render
+ * @return {ReactElement} SubmitButton
+ */
+
 /** Import styles for component */
 module.exports = function (_ref) {
   var disabled = _ref.disabled,
       onSubmit = _ref.onSubmit,
       isSubmitting = _ref.isSubmitting,
       primary = _ref.primary,
-      getCity = _ref.getCity;
+      getCityWeather = _ref.getCityWeather;
 
   if (isSubmitting) {
     return _react2.default.createElement(
@@ -183,12 +280,12 @@ module.exports = function (_ref) {
   return !disabled ? _react2.default.createElement(
     'button',
     { className: primary ? _buttonStyles.primaryButton : _buttonStyles.button,
-      onClick: (onSubmit, getCity) },
+      onClick: getCityWeather },
     'Submit'
   ) : null;
 };
 
-},{"./buttonStyles":6,"cmz":1,"react":"react"}],6:[function(require,module,exports){
+},{"./buttonStyles":8,"cmz":1,"react":"react"}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -208,7 +305,7 @@ var button = exports.button = (0, _cmz2.default)('\n  &: {\n    background: #929
 
 var primaryButton = exports.primaryButton = (0, _cmz2.default)('\n  background: red;\n').compose(_styles.generalStyle);
 
-},{"../../styles":11,"cmz":1}],7:[function(require,module,exports){
+},{"../../styles":13,"cmz":1}],9:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -217,6 +314,10 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * render
+ * @return {ReactElement} TextInput
+ */
 module.exports = function (_ref) {
   var inputValue = _ref.inputValue,
       onTextInput = _ref.onTextInput,
@@ -228,7 +329,7 @@ module.exports = function (_ref) {
   return _react2.default.createElement('input', { type: 'text', value: inputValue, onChange: onTextInput });
 };
 
-},{"react":"react"}],8:[function(require,module,exports){
+},{"react":"react"}],10:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -251,9 +352,14 @@ var _Label = require('../../components/Label/Label');
 
 var _Label2 = _interopRequireDefault(_Label);
 
+var _Section = require('../../components/Section/Section');
+
+var _Section2 = _interopRequireDefault(_Section);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = function SampleForm(props) {
+/**Components*/
+module.exports = function WeatherApp(props) {
   if (props.error) {
     return _react2.default.createElement(
       'div',
@@ -276,17 +382,23 @@ module.exports = function SampleForm(props) {
     _react2.default.createElement(_SubmitButton2.default, {
       isSubmitting: props.isSubmitting,
       onSubmit: props.onSubmit,
-      getCity: props.getCity
+      getCityWeather: props.getCityWeather
+    }),
+    _react2.default.createElement(_Section2.default, {
+      informations: props.data,
+      inputValue: props.inputValue || props.text,
+      clear: props.clear
     })
   );
 };
 
-/**Components*/
-
-},{"../../components/Label/Label":4,"../../components/SubmitButton/SubmitButton":5,"../../components/TextInput/TextInput":7,"cmz":1,"react":"react"}],9:[function(require,module,exports){
+},{"../../components/Label/Label":5,"../../components/Section/Section":6,"../../components/SubmitButton/SubmitButton":7,"../../components/TextInput/TextInput":9,"cmz":1,"react":"react"}],11:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+/** import key from config file */
+
 
 var _react = require('react');
 
@@ -295,6 +407,10 @@ var _react2 = _interopRequireDefault(_react);
 var _index = require('./index.js');
 
 var _index2 = _interopRequireDefault(_index);
+
+var _config = require('../../common/config');
+
+var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -305,33 +421,23 @@ presets.init = {
   error: null,
   isChecked: false,
   isSubmitting: false,
-  header: 'Type in your city',
-  cities: []
+  header: 'Check current weather in any city in the world',
+  data: {}
 };
 
-presets.submitting = _extends({}, presets.init, {
-  isSubmitting: true
-});
+presets.submitting = _extends({}, presets.init);
 
 presets.error = _extends({}, presets.init, {
   error: new Error('something bad happened')
 });
 
 presets.withValues = _extends({}, presets.init, {
-  text: '1234',
-  isChecked: true
+  text: 'Warsaw'
 });
 
-presets.onlyText = _extends({}, presets.withValues, {
-  isChecked: false
-
-});
-
-presets.onlyChechbox = _extends({}, presets.withValues, {
-  text: '1234'
-});
-
-// stateful container
+/**
+ * Statefull container
+ */
 module.exports = _react2.default.createClass({
   displayName: 'State',
 
@@ -352,17 +458,32 @@ module.exports = _react2.default.createClass({
     }));
   },
 
-  getCity: function getCity() {
+  /**
+   * Handle ajax request
+   */
+  getCityWeather: function getCityWeather() {
     var _this = this;
 
-    var apiKey = '953079470cc6ebfc8ed5cbe3c2fb7101';
+    var apiKey = _config2.default;
     var apiLink = 'http://api.openweathermap.org/data/2.5/forecast?APPID=' + apiKey;
     var cityUrl = apiLink + '&q=' + this.state.inputValue;
+
     fetch(cityUrl).then(function (blob) {
       return blob.json();
     }).then(function (data) {
-      _this.data = data;
-      console.log(data.city);
+      _this.setState({
+        data: data
+      });
+    });
+  },
+
+  /**
+   * Clear all typed informations and states
+   */
+  clear: function clear() {
+    this.setState({
+      data: {},
+      inputValue: ''
     });
   },
 
@@ -371,12 +492,13 @@ module.exports = _react2.default.createClass({
       inputValue: this.state.inputValue,
       onTextInput: this.onTextInput,
       onSubmit: this.onSubmit,
-      getCity: this.getCity
+      getCityWeather: this.getCityWeather,
+      clear: this.clear
     }));
   }
 });
 
-},{"./index.js":8,"react":"react"}],10:[function(require,module,exports){
+},{"../../common/config":4,"./index.js":10,"react":"react"}],12:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -397,7 +519,7 @@ if (module.hot) {
   module.hot.accept();
 }
 
-},{"./containers/WeatherApp/state":9,"react":"react","react-dom":"react-dom"}],11:[function(require,module,exports){
+},{"./containers/WeatherApp/state":11,"react":"react","react-dom":"react-dom"}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -413,6 +535,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /** Place to defince general re-usable styles for components */
 
-var generalStyle = exports.generalStyle = (0, _cmz2.default)('\n  padding: 10px 20px;\n  textransform: uppercase;\n');
+var generalStyle = exports.generalStyle = (0, _cmz2.default)('\n  textransform: uppercase;\n');
 
-},{"cmz":1}]},{},[10]);
+},{"cmz":1}]},{},[12]);

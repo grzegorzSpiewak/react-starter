@@ -5,13 +5,13 @@ import cmz from 'cmz';
 import TextInput from '../../components/TextInput/TextInput';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
 import Label from '../../components/Label/Label';
+import Section from '../../components/Section/Section';
 
 
-module.exports = function SampleForm(props) {
+module.exports = function WeatherApp(props) {
   if (props.error) {
     return <div style={{ color: 'red' }}>{ props.error.toString()}</div>
   }
-
 
 
   return <div>
@@ -28,7 +28,13 @@ module.exports = function SampleForm(props) {
     <SubmitButton
       isSubmitting={ props.isSubmitting }
       onSubmit={ props.onSubmit }
-      getCity={ props.getCity }
+      getCityWeather={ props.getCityWeather }
+    />
+
+    <Section
+      informations={ props.data }
+      inputValue={ props.inputValue || props.text }
+      clear={ props.clear }
     />
   </div>;
 };

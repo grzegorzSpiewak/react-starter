@@ -5,10 +5,14 @@ import cmz from 'cmz';
 import { button } from './buttonStyles';
 import { primaryButton } from './buttonStyles'
 
-module.exports = ({ disabled, onSubmit, isSubmitting, primary, getCity }) => {
+/**
+ * render
+ * @return {ReactElement} SubmitButton
+ */
+module.exports = ({ disabled, onSubmit, isSubmitting, primary, getCityWeather }) => {
   if (isSubmitting) {
     return <p>Submiting...</p>;
   }
   return !disabled ? <button className={ primary ? primaryButton : button }
-                             onClick={ onSubmit, getCity }>Submit</button> : null;
+                             onClick={ getCityWeather }>Submit</button> : null;
 };
