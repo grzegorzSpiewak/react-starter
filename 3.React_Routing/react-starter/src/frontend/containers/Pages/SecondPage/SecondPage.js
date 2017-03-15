@@ -11,6 +11,6 @@ const pageStyle = cmz(`
 
 module.exports = () => {
   return (
-    <section className={ pageStyle } >This is Second Page</section>
+    <section className={ pageStyle }>This is Second Page</section>
   )
 };
