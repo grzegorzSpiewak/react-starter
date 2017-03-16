@@ -32,3 +32,6 @@ PS. Please excuse the rough videos 😂
 3. Planed structure of files
 4. Implanted basic routing and navigation
 5. CMZ Practice
+6. Added list of items on Landing Page
+7. Added detail page for clicked items
+8. Routing elements 

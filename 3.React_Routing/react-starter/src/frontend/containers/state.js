@@ -23,8 +23,6 @@ module.exports = React.createClass({
     return presets.init;
   },
 
-
-
   render: function() {
     return <Component { ...this.state }
 

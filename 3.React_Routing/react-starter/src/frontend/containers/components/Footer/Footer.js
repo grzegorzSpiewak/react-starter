@@ -1,7 +1,8 @@
 'use strict';
+
 import React from 'react';
 
-/** import styles */
+/** Importing and Styling Component */
 import { FooterStyles } from './Styles';
 
 module.exports = () => {
