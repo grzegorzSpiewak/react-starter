@@ -2,10 +2,12 @@ import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 /**Pages */
-import Layout from './Pages/Layout/Layout'
-import LandingPage from './Pages/LandingPage/LandingPage'
-import SecondPage from './Pages/SecondPage/SecondPage'
-import ThirdPage from './Pages/ThirdPage/ThirdPage'
+import Layout from './pages/Layout/Layout'
+import LandingPage from './pages/LandingPage/LandingPage'
+import DetailPage from './pages/DetailPage/DetailPage'
+import SecondPage from './pages/SecondPage/SecondPage'
+import ThirdPage from './pages/ThirdPage/ThirdPage'
+
 
 module.exports = function (props) {
   if (props.error) {
@@ -16,8 +18,9 @@ module.exports = function (props) {
     <Router history={ hashHistory }>
       <Route path='/' component={ Layout }>
         <IndexRoute component={ LandingPage }></IndexRoute>
-        <Route path='second' component={ SecondPage }></Route>
-        <Route path='Third' component={ ThirdPage }></Route>
+        <Route path='detail/(:id)' name='Detail viev' component={ DetailPage }></Route>
+        <Route path='second' name='Second Page' component={ SecondPage }></Route>
+        <Route path='Third' name='Third Page'component={ ThirdPage }></Route>
       </Route>
     </Router>
   );

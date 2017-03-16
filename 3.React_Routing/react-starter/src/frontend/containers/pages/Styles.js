@@ -10,5 +10,6 @@ export const generalStyle = cmz(`
   justify-content: center;
   align-items: center;
   color: black;
+  text-align: center;
   font-size: 2em;
 `);

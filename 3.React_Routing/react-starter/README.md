@@ -31,4 +31,4 @@ PS. Please excuse the rough videos 😂
 2. Installed react-history (npm install --save-dev history)
 3. Planed structure of files
 4. Implanted basic routing and navigation
-5. CMZ Practice 
+5. CMZ Practice

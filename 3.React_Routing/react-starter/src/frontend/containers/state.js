@@ -1,12 +1,11 @@
 import React from 'react';
 import Component from './index.js';
 
-
 const presets = {};
 
 presets.init = {
   error: null,
-  path: '/'
+
 }
 
 presets.error = {
@@ -23,6 +22,8 @@ module.exports = React.createClass({
   getInitialState: function() {
     return presets.init;
   },
+
+
 
   render: function() {
     return <Component { ...this.state }
